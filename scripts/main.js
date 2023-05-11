@@ -6,7 +6,10 @@ function Book(title, author, pages, read) {
     (this.pages = pages),
     (this.read = read);
 
-    this.info = () => `${this.title} by ${this.author}, ${this.pages} pages, ${this.read === true ? "Read" : "Not read yet"}`;
+  this.info = () =>
+    `${this.title} by ${this.author}, ${this.pages} pages, ${
+      this.read === true ? "Read" : "Not read yet"
+    }`;
 }
 
 function addBookToLibrary(
@@ -16,16 +19,33 @@ function addBookToLibrary(
   read = false
 ) {
   const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+  myLibrary = [newBook];
 }
-
-addBookToLibrary("elpep", "ete", 12, false);
 
 function displayBooks() {
   myLibrary.forEach((book) => {
     const card = document.createElement("div");
+    const removeBook = document.createElement("button");
+    const readStatus = document.createElement("button");
+
+    removeBook.textContent = "Remove";
     card.textContent = book.info();
-    console.log(book.info())
-    document.body.append(card)
+    card.appendChild(readStatus);
+    card.appendChild(removeBook);
+
+    if(book.read === true) readStatus.textContent = "Read"
+        else readStatus.textContent = "Not read"
+
+    readStatus.addEventListener("click", ()=>{
+        if(readStatus.textContent === "Not read") readStatus.textContent = "Read"
+        else readStatus.textContent = "Not read"
+    });
+
+    removeBook.addEventListener("click", () => {
+      document.body.removeChild(card);
+      myLibrary.pop(); // <-- This may cause problems
+    });
+    
+    document.body.append(card);
   });
 }
