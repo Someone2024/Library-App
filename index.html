@@ -7,30 +7,32 @@
     <title>Library App</title>
     <script src="scripts/main.js" defer></script>
     <script src="scripts/buttons.js" defer></script>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-
     <header class="header">
-        <h1 class="logo">library</h1>
+      <h1 class="logo">library</h1>
 
-        <button class="login">Log in</button>
+      <button class="login">Log in</button>
     </header>
 
-    <button type="button" id="new-book"> + New Book</button>
-    
-    <form id="book-form">
-      <input type="text" name="title" id="title" class="input" />
+    <div class="books">
+      <button type="button" id="new-book">+ New Book</button>
 
-      <input type="text" name="" id="author" class="input" />
+      <form class="zoomIn" id="book-form">
+        <h3 class="form-title">Add a new book</h3>
+        <input type="text" name="title" id="title" class="input" />
 
-      <input type="number" name="pages" id="pages" class="input" />
+        <input type="text" name="" id="author" class="input" />
 
-      <label for="read">
-        Have you read it?<input  type="checkbox" name="read" id="read" />
-    </label>
+        <input type="number" name="pages" id="pages" class="input" />
 
-    <button type="button" id="add-book">Add Book</button>
-    </form>
+        <label for="read">
+          Have you read it?<input type="checkbox" name="read" id="read" />
+        </label>
+
+        <button type="button" id="add-book">Add Book</button>
+      </form>
+    </div>
   </body>
 </html>
