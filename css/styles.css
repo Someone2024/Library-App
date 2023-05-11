@@ -1,66 +1,165 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --white: #fffbfb;
-    --grey: #f0eef1;
-    --black: #050505;
-    --red: #ff7070;
-    --light-green: #9fff9c;
-    --light-red: #ff9c9c;
-    --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    font-family: 'Poppins';
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --white: #fffbfb;
+  --grey: #f0eef1;
+  --black: #050505;
+  --red: #ff7070;
+  --light-green: #9fff9c;
+  --light-red: #ff9c9c;
+  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  font-family: "Poppins";
 }
 
-body{
-    background-color: var(--grey);
-    text-align: center;
+body {
+  background-color: var(--grey);
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--white);
-    padding: 2% 0 2% 0;
-    box-shadow: var(--shadow);
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  padding: 2% 0 2% 0;
+  box-shadow: var(--shadow);
 }
 
-.logo{
-    margin-left: 8%;
-    font-size: 2em;
-    font-weight: 900;
+.logo {
+  margin-left: 8%;
+  font-size: 2em;
+  font-weight: 900;
 }
 
-.login{
-    margin-right: 8%;
-    border: none;
-    background-color: var(--grey);
-    border-radius: 8px;
-    padding: 1% 1.5%;
-    font-weight: bold;
-    color: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: pointer;
-    outline: none;
-    transition: filter 0.15s ease-in-out;
+.login {
+  margin-right: 8%;
+  border: none;
+  background-color: var(--grey);
+  border-radius: 8px;
+  padding: 1% 1.5%;
+  font-weight: bold;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: filter 0.15s ease-in-out;
 }
 
-#new-book{
-    margin-top: 5%;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 24px;
-    font-weight: 600;
-    border: none;
-    color: inherit;
-    font-family: inherit;
-    cursor: pointer;
-    transition: filter 0.15s ease-in-out;
+#new-book {
+  margin-top: 5%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: filter 0.15s ease-in-out;
 }
 
-#new-book:hover, .login:hover  {
-    filter: brightness(90%);
+#new-book:hover,
+.login:hover {
+  filter: brightness(90%);
+}
+
+#book-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 15%;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: var(--grey);
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: text;
+  outline: none;
+  background-color: white;
+}
+
+.form-title {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+.books {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomOut {
+  -webkit-animation-name: zoomOut;
+  animation-name: zoomOut;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes zoomOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes zoomOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  100% {
+    opacity: 0;
+  }
 }
