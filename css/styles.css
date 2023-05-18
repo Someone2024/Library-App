@@ -99,67 +99,50 @@ body {
   align-items: center;
 }
 
-.zoomIn {
-  -webkit-animation-name: zoomIn;
-  animation-name: zoomIn;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-@-webkit-keyframes zoomIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  50% {
-    opacity: 1;
-  }
-}
-@keyframes zoomIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  50% {
-    opacity: 1;
-  }
+.card {
+  width: 320px;
+  height: 292px;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  line-height: 1.2;
+  padding: 20px;
+  font-weight: 600;
 }
 
-.zoomOut {
-  -webkit-animation-name: zoomOut;
-  animation-name: zoomOut;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+.read, .remove{
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: filter 0.15s ease-in-out 0s;
+  border: none;
+  background-color: var(--light-red);
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  outline: none;
+  width: 95%;
 }
-@-webkit-keyframes zoomOut {
-  0% {
-    opacity: 1;
-  }
 
-  50% {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  100% {
-    opacity: 0;
-  }
+.remove{
+  background-color: var(--grey);
 }
-@keyframes zoomOut {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  100% {
-    opacity: 0;
-  }
+
+.read:hover, .remove:hover{
+  filter: brightness(90%);
+}
+
+.cards-container{
+  width: 100%;
+  height: 62vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 40px;
 }
