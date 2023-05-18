@@ -1,51 +1,79 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  (this.title = title),
-    (this.author = author),
-    (this.pages = pages),
-    (this.read = read);
+class Book {
+  constructor(title, author, pages, read) {
+    (this.title = title),
+      (this.author = author),
+      (this.pages = pages),
+      (this.read = read);
 
-  this.info = () =>
-    `${this.title} by ${this.author}, ${this.pages} pages, ${
-      this.read === true ? "Read" : "Not read yet"
-    }`;
+    this.info = () =>
+      `${this.title} by ${this.author}, ${this.pages} pages, ${
+        this.read === true ? "Read" : "Not read yet"
+      }`;
+  }
+
+  getTitle = () => this.title;
+  getAuthor = () => this.author;
+  getPages = () => this.pages;
 }
 
-function addBookToLibrary(
-  title = "elpe",
-  author = "si",
-  pages = 12,
-  read = false
-) {
+function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary = [newBook];
 }
 
 function displayBooks() {
+  const cardsContainer = document.querySelector(".cards-container")
   myLibrary.forEach((book) => {
     const card = document.createElement("div");
+    const cardTitle = document.createElement("p");
+    const cardAuthor = document.createElement("p");
+    const cardPages = document.createElement("p");
     const removeBook = document.createElement("button");
     const readStatus = document.createElement("button");
 
+    cardTitle.textContent = '"' + book.title + '"'; 
+    cardAuthor.textContent = book.author; 
+    cardPages.textContent = book.pages; 
+    card.append(cardTitle, cardAuthor, cardPages);
+
     removeBook.textContent = "Remove";
-    card.textContent = book.info();
     card.appendChild(readStatus);
     card.appendChild(removeBook);
+    card.classList.add("card");
 
-    if(book.read === true) readStatus.textContent = "Read"
-        else readStatus.textContent = "Not read"
+    readStatus.classList.add("read")
+    removeBook.classList.add("remove")
 
-    readStatus.addEventListener("click", ()=>{
-        if(readStatus.textContent === "Not read") readStatus.textContent = "Read"
-        else readStatus.textContent = "Not read"
+    if (book.read === true){
+      readStatus.textContent = "Read";
+    } 
+    else readStatus.textContent = "Not read";
+
+    if(readStatus.textContent === "Not read"){
+      readStatus.style.backgroundColor = "#ff9c9c";
+    }else{
+      readStatus.style.backgroundColor = "#9fff9c";
+    }
+      
+
+    readStatus.addEventListener("click", () => {
+      if (readStatus.textContent === "Not read"){
+        readStatus.textContent = "Read";
+        readStatus.style.backgroundColor = "#9fff9c";
+      }
+      else {readStatus.textContent = "Not read";
+           readStatus.style.backgroundColor = "#ff9c9c";
+          }
+
     });
 
     removeBook.addEventListener("click", () => {
-      document.body.removeChild(card);
+      cardsContainer.removeChild(card);
       myLibrary.pop(); // <-- This may cause problems
     });
-    
-    document.body.append(card);
+
+    cardsContainer.append(card);
   });
 }
