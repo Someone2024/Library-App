@@ -1,7 +1,7 @@
 const newBook = document.getElementById("new-book");
 const bookForm = document.getElementById("book-form");
 const addBook = document.getElementById("add-book");
-
+const dialog = document.querySelector(".dialog")
 const bookFields = {
   title: document.getElementById("title"),
   author: document.getElementById("author"),
@@ -9,14 +9,9 @@ const bookFields = {
   read: document.getElementById("read"),
 };
 
-bookForm.style.display = "none";
 
 newBook.addEventListener("click", () => {
-  {
-    bookForm.style.display === "none"
-      ? (bookForm.style.display = "block")
-      : (bookForm.style.display = "none");
-  }
+  dialog.showModal()
 });
 
 addBook.addEventListener("click", () => {
@@ -29,5 +24,5 @@ addBook.addEventListener("click", () => {
 
   displayBooks();
 
-  bookForm.style.display = "none"
+  dialog.close()
 });
