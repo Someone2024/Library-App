@@ -23,6 +23,7 @@ addBook.addEventListener("click", () => {
   );
 
   displayBooks();
+  bookForm.reset()
 
   dialog.close()
 });
