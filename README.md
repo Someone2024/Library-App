@@ -20,7 +20,7 @@ The Library App offers the following features:
 To use the Library App, follow these steps:
 
 1. Go to https://someone2024.github.io/Library-App/
-2. Launch the app and create an account or sign in if you already have one.
+2. create an account or sign in if you already have one.
 3. To add a new book, click on the "Add Book" button and fill in the required details (title, author, genre, and publication year).
 4. To mark a book as read or unread, locate the book in your library and click on the corresponding button or checkbox.
 5. If you want to delete a book from your library, find the book entry and click on the "Delete" button.
