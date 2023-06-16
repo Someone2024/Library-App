@@ -4,6 +4,8 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const user = auth.currentUser;
+
 
 function SignIn() {
   signInWithPopup(auth, provider)
@@ -33,5 +35,6 @@ function SignOut() {
 export {
     SignIn,
     SignOut,
-    auth
+    auth,
+    user
 }
