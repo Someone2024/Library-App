@@ -4,7 +4,8 @@ import {
   ProfilePic, LoginButton, LogOutButton,
   newBookEvent,
   deleteNewBookEvent, 
-  authErr
+  authErr,
+  deleteAuthErrEvent
 } from "../App"
 
 LoginButton.addEventListener("click", () => SignIn())
@@ -17,6 +18,7 @@ onAuthStateChanged(auth, (user) => {
     LogOutButton.style.display = "block"
     ProfilePic.src = user.photoURL
     newBookEvent()
+    deleteAuthErrEvent()
   } else {
     // User is signed out
     // ...

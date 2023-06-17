@@ -48,6 +48,11 @@ function authErr() {
   CloseErr.addEventListener("click", closeAuthErr)
 }
 
+function deleteAuthErrEvent() {
+  newBook.removeEventListener("click", showAuthErr)
+}
+
+
 export {
   ProfilePic,
   LoginButton,
@@ -55,4 +60,5 @@ export {
   newBookEvent,
   deleteNewBookEvent,
   authErr,
+  deleteAuthErrEvent
 }
