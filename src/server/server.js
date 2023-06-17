@@ -3,8 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import {
   newBookEvent,
   deleteNewBookEvent, 
-  authErr, 
-  userIn, userOut
+  
 } from "../App"
 
 LoginButton.addEventListener("click", () => SignIn())
@@ -14,6 +13,7 @@ onAuthStateChanged(auth, (user) => {
   if(user) {
     userIn()
     newBookEvent()
+    deleteAuthErrEvent()
   } else {
     authErr()
     userOut()
