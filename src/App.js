@@ -23,6 +23,19 @@ const bookFields = {
   read: document.getElementById("read"),
 };
 
+function userIn() {
+  LoginButton.style.display = "none"
+  ProfilePic.style.display = "inline"
+  LogOutButton.style.display = "block"
+  ProfilePic.src = user.photoURL
+}
+
+function userOut(){
+  LogOutButton.style.display = "none"
+  ProfilePic.style.display = "none"
+  LoginButton.style.display = "block"
+}
+
 function showModal() {
   dialog.showModal()
 }
@@ -49,10 +62,7 @@ function authErr() {
 }
 
 export {
-  ProfilePic,
-  LoginButton,
-  LogOutButton,
   newBookEvent,
   deleteNewBookEvent,
-  authErr,
+  authErr, userOut, userIn,
 }
