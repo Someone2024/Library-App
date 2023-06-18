@@ -27,7 +27,7 @@ function userIn() {
   LoginButton.style.display = "none"
   ProfilePic.style.display = "inline"
   LogOutButton.style.display = "block"
-  ProfilePic.src = user.photoURL
+  ProfilePic.src = auth.currentUser.photoURL
 }
 
 function userOut(){
@@ -65,11 +65,27 @@ function deleteAuthErrEvent() {
   newBook.removeEventListener("click", showAuthErr)
 }
 
+function createBooks() {
+  addBook.addEventListener("click",()=> {
+    createBook(
+      bookFields.title.value,
+      bookFields.author.value,
+      bookFields.pages.value,
+      bookFields.read.checked,
+      auth.currentUser.uid
+    )
+    dialog.close()
+  })
+
+}
 
 export {
+  LogOutButton,
+  LoginButton,
   newBookEvent,
   deleteNewBookEvent,
   authErr,
   userOut, userIn,
-  deleteAuthErrEvent
+  deleteAuthErrEvent,
+  createBooks
 }
