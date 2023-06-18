@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --white: #fffbfb;
+  --grey: #f0eef1;
+  --black: #050505;
+  --red: #ff7070;
+  --light-green: #9fff9c;
+  --light-red: #ff9c9c;
+  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  font-family: "Poppins";
+}
+
+body {
+  background-color: var(--grey);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  padding: 2% 0 2% 0;
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  margin-left: 8%;
+  font-size: 2em;
+  font-weight: 900;
+}
+
+.login, .logout {
+  margin-right: 8%;
+  border: none;
+  background-color: var(--grey);
+  border-radius: 8px;
+  padding: 1% 1.5%;
+  font-weight: bold;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: filter 0.15s ease-in-out;
+}
+
+.logout {
+  display: none;
+}
+
+#new-book, .closeErr {
+  margin-top: 5%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: filter 0.15s ease-in-out;
+}
+
+#new-book:hover,
+.login:hover, .closeErr {
+  filter: brightness(90%);
+}
+
+.books {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  width: 320px;
+  height: 292px;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  line-height: 1.2;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.read, .remove, #add-book{
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: filter 0.15s ease-in-out 0s;
+  border: none;
+  background-color: var(--light-red);
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  outline: none;
+  width: 95%;
+}
+
+.remove, #add-book{
+  background-color: var(--grey);
+}
+
+.read:hover, .remove:hover{
+  filter: brightness(90%);
+}
+
+.cards-container{
+  width: 100%;
+  height: 62vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 40px;
+}
