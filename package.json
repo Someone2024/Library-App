@@ -14,7 +14,8 @@
   "version": "1.0.0",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --mode=development --watch"
+    "build": "webpack --mode=development --watch",
+    "production_build": "webpack --mode=production"
   },
   "keywords": [],
   "author": "",
