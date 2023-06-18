@@ -1,9 +1,13 @@
 import { auth } from "./server/Authentication";
 import createBook, { retrieveBooks } from "./server/CloudStore"
+import "./css/styles.css"
+import "./css/Form.css"
 
 const newBook = document.getElementById("new-book");
 const addBook = document.getElementById("add-book");
 const dialog = document.querySelector(".dialog");
+const Form = document.querySelector("#book-form");
+const cardsContainer = document.querySelector(".cards-container");
 
 const ProfilePic = document.querySelector(".profile")
 
@@ -32,6 +36,7 @@ function userOut(){
   LogOutButton.style.display = "none"
   ProfilePic.style.display = "none"
   LoginButton.style.display = "block"
+  cardsContainer.innerHTML = ""
 }
 
 function showModal() {
@@ -48,10 +53,12 @@ function deleteNewBookEvent() {
 
 function showAuthErr() {
   AuthErr.showModal()
+  AuthErr.style.display = "flex"
 }
 
 function closeAuthErr() {
   AuthErr.close()
+  AuthErr.style.display = "none"
 }
 
 function authErr() {
@@ -73,6 +80,7 @@ function createBooks() {
       auth.currentUser.uid
     )
     dialog.close()
+    Form.reset()
   })
 
 }
