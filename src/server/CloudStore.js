@@ -6,7 +6,8 @@ import {
   getDocs,
   addDoc,
   deleteDoc,
-  doc
+  orderBy,
+  limit
 } from "firebase/firestore";
 import app from "./firebaseApp";
 
@@ -21,11 +22,23 @@ export default async function createBook(title, author, pages, read, userId) {
       read: read,
       id: userId,
     });
-    const q = doc(collection(db, "Books"), where("id", "==", userId));
-    const doc = await getDoc(q)
-    createCard(doc.data().title, doc.data().author, doc.data().pages, doc.data().read, doc.ref)
+    const q = query(
+      collection(db, "Books"),
+      where("id", "==", userId),
+      limit(1)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      createCard(
+        doc.data().title,
+        doc.data().author,
+        doc.data().pages,
+        doc.data().read,
+        doc.ref
+      );
+    });
     console.log("Document written with ID: ", docRef.id);
-  } catch(err) {
+  } catch (err) {
     console.log("Error adding document: ", err);
   }
 }
@@ -35,9 +48,13 @@ export async function retrieveBooks(currentUserId) {
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    //take books info from doc.data()
-    createCard(doc.data().title, doc.data().author, doc.data().pages, doc.data().read, doc.ref)
+    createCard(
+      doc.data().title,
+      doc.data().author,
+      doc.data().pages,
+      doc.data().read,
+      doc.ref
+    );
   });
 }
 
@@ -56,20 +73,20 @@ export async function createCard(title, author, pages, read, docRef) {
   card.append(cardTitle, cardAuthor, cardPages, readStatus, removeBook);
 
   card.classList.add("card");
-  removeBook.textContent = "Remove"
+  removeBook.textContent = "Remove";
 
-  if(read === true) {
+  if (read === true) {
     readStatus.textContent = "Read";
   } else readStatus.textContent = "Not read";
 
-  if(readStatus.textContent === "Not read") {
+  if (readStatus.textContent === "Not read") {
     readStatus.style.backgroundColor = "#ff9c9c";
   } else {
     readStatus.style.backgroundColor = "#9fff9c";
   }
 
   readStatus.addEventListener("click", () => {
-    if(readStatus.textContent === "Not read") {
+    if (readStatus.textContent === "Not read") {
       readStatus.textContent = "Read";
       readStatus.style.backgroundColor = "#9fff9c";
     } else {
@@ -80,7 +97,7 @@ export async function createCard(title, author, pages, read, docRef) {
 
   removeBook.addEventListener("click", async () => {
     cardsContainer.removeChild(card);
-    await deleteDoc(docRef)
+    await deleteDoc(docRef);
   });
 
   cardsContainer.append(card);
