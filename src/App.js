@@ -1,9 +1,7 @@
-import { addBookToLibrary, displayBooks } from "./scripts/main"
 import { auth } from "./server/Authentication";
 import createBook, { retrieveBooks } from "./server/CloudStore"
 
 const newBook = document.getElementById("new-book");
-const bookForm = document.getElementById("book-form");
 const addBook = document.getElementById("add-book");
 const dialog = document.querySelector(".dialog");
 
