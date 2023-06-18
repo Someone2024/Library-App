@@ -32,7 +32,7 @@ body {
   font-weight: 900;
 }
 
-.login {
+.login, .logout {
   margin-right: 8%;
   border: none;
   background-color: var(--grey);
@@ -47,7 +47,11 @@ body {
   transition: filter 0.15s ease-in-out;
 }
 
-#new-book {
+.logout {
+  display: none;
+}
+
+#new-book, .closeErr {
   margin-top: 5%;
   padding: 10px 15px;
   border-radius: 8px;
@@ -61,7 +65,7 @@ body {
 }
 
 #new-book:hover,
-.login:hover {
+.login:hover, .closeErr {
   filter: brightness(90%);
 }
 
