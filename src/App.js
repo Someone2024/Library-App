@@ -72,7 +72,6 @@ function createBooks() {
       bookFields.read.checked,
       auth.currentUser.uid
     )
-    retrieveBooks(auth.currentUser.uid);
     dialog.close()
   })
 
