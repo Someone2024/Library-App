@@ -7,7 +7,8 @@ import {
   addDoc,
   deleteDoc,
   orderBy,
-  limit
+  limit,
+  getDoc
 } from "firebase/firestore";
 import app from "./firebaseApp";
 
@@ -27,8 +28,7 @@ export default async function createBook(title, author, pages, read, userId) {
       where("id", "==", userId),
       limit(1)
     );
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
+    const doc = await getDoc(docRef);
       createCard(
         doc.data().title,
         doc.data().author,
@@ -36,7 +36,6 @@ export default async function createBook(title, author, pages, read, userId) {
         doc.data().read,
         doc.ref
       );
-    });
     console.log("Document written with ID: ", docRef.id);
   } catch (err) {
     console.log("Error adding document: ", err);
@@ -73,6 +72,8 @@ export async function createCard(title, author, pages, read, docRef) {
   card.append(cardTitle, cardAuthor, cardPages, readStatus, removeBook);
 
   card.classList.add("card");
+  readStatus.classList.add("read")
+  removeBook.classList.add("remove")
   removeBook.textContent = "Remove";
 
   if (read === true) {
