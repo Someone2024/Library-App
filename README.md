@@ -1,4 +1,4 @@
-# Library App
+# Library App 
 
 The Library App is a simple application that allows users to manage their personal book library. With this app, users can create book entries, change the read state of books, and delete entries. It provides an easy and convenient way to organize and track your book collection.
 
